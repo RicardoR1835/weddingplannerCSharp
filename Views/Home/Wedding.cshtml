@@ -1,0 +1,14 @@
+@using weddingPlanner.Models;
+@model Wedding
+<br>
+<br>
+<h1 style="display: inline-block; width: 85%;">@Model.Name and @Model.Name2's Wedding</h1>
+<a style="margin-right: 20px;" href="dash/@ViewBag.Id">Dashboard</a>
+<a href="/logout">Logout</a>
+<div class="container">
+    <h4> Date: @Model.Date</h4>
+    @foreach(var guest in ViewBag.Guestlist)
+    {
+        <h6>@guest.Guest.FName</h6>
+    }
+</div>

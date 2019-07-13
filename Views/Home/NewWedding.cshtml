@@ -1,0 +1,25 @@
+@model weddingPlanner.Models.Wedding
+<div class="container d-flex justify-content-around">
+    <div class="registration">
+        <form action="/create/wedding" method="POST">
+            <h2>Plan your wedding</h2>
+            <br>
+            <span style="color: red;" asp-validation-for="Name"></span>
+            <input class="form-control" asp-for="Name" placeholder="Wedder One">
+            <br>
+            <span style="color: red;" asp-validation-for="Name2"></span>
+            <input class="form-control" asp-for="Name2" placeholder="Last Name">
+            <br>
+            <label>Date:</label>
+            <span style="color: red;" asp-validation-for="Date"></span>
+            <input class="form-control" asp-for="Date" type="date">
+            <br>
+            <span style="color: red;" asp-validation-for="Address"></span>
+            <input class="form-control" asp-for="Address" placeholder="Address">
+            <br>
+            <input type="hidden" name="UserId" value="@ViewBag.Id">
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+    
+</div>

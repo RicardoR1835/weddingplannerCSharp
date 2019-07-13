@@ -1,0 +1,75 @@
+@using weddingPlanner.Models;
+@model List<Wedding>
+
+<br>
+<br>
+<br>
+<h1 class="text-center" style="display: inline-block; width: 95%;">Welcome to the wedding planner!</h1>
+<a href="/logout">Logout</a>
+<br>
+<br>
+<div class="container">
+    
+    <div class="actions">
+        <table class="table">
+    <thead class="thead-light text-center">
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">Wedding</th>
+        <th scope="col">Date</th>
+        <th scope="col">Guest</th>
+        <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+            @foreach(var x in @Model)
+            {
+                <tr>
+                <th scope="row">@i</th>
+                <td><a href="/@x.WeddingId">@x.Name and @x.Name2</a></td>
+                <td>@x.Date</td>
+                <td>@x.GuestList.Count()</td>
+                @if(x.Creator == ViewBag.LoggedIn)
+                {
+                    <td><a href="/delete/@x.WeddingId">Delete</a></td>;
+                }
+                else
+                {
+                    if(x.GuestList.Count() == 0)
+                    {
+                        <td><a href="/rsvp/@x.WeddingId">Rsvp</a></td>
+                    }
+                    else
+                    {
+                        bool y = false;
+                        @foreach(var guest in x.GuestList)
+                        {
+                            @if(guest.Guest == ViewBag.LoggedIn)
+                            {
+                                y = true;
+                            }
+                            @if(y == true)
+                            {
+                                <td><a href="/unrsvp/@x.WeddingId">Unrsvp</a></td>
+                            }
+                            else{
+                                <td><a href="/rsvp/@x.WeddingId">Rsvp</a></td>
+                            }
+                        }
+                    }
+                    
+                }
+
+                
+
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+    </table> 
+    </div>
+    <p class="text-right"><a href="/wedding/new" class=" btn btn-primary">New Wedding</a></p>
+</div>

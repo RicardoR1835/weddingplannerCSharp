@@ -1,0 +1,32 @@
+﻿@model weddingPlanner.Models.IndexViewModel;
+<br>
+<h1 class="text-center">Welcome!</h1>
+<br>
+<br>
+<div class="container d-flex justify-content-around">
+    <div class="registration">
+        <form asp-action="Create" asp-controller="Home" method="POST">
+            <h2>Registration</h2>
+            <br>
+            <span style="color: red;" asp-validation-for="NewUser.FName"></span>
+            <input class="form-control" asp-for="NewUser.FName" placeholder="First Name">
+            <br>
+            <span style="color: red;" asp-validation-for="NewUser.LName"></span>
+            <input class="form-control" asp-for="NewUser.LName" placeholder="Last Name">
+            <br>
+            <span style="color: red;" asp-validation-for="NewUser.Email"></span>
+            <input class="form-control" asp-for="NewUser.Email" placeholder="Email">
+            <br>
+            <span style="color: red;" asp-validation-for="NewUser.Password"></span>
+            <input class="form-control" asp-for="NewUser.Password" placeholder="Password">
+            <br>
+            <span style="color: red;" asp-validation-for="NewUser.PasswordConfirm"></span>
+            <input class="form-control"
+            asp-for="NewUser.PasswordConfirm"  placeholder="Confirm Password">
+            <br>
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+    <partial name="LoginPartial"></partial>
+    
+</div>
